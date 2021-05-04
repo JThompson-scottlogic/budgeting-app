@@ -6,6 +6,8 @@ import { TitleComponent } from './title/title.component';
 import { HomepageNavigationComponent } from './homepage-navigation/homepage-navigation.component';
 import { RecentTransactionsComponent } from './recent-transactions/recent-transactions.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { HomepageInputComponent } from './homepage-input/homepage-input.component';
+import { HomepageSummaryComponent } from './homepage-summary/homepage-summary.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     TitleComponent,
     HomepageNavigationComponent,
     RecentTransactionsComponent,
-    HomePageComponent
+    HomePageComponent,
+    HomepageInputComponent,
+    HomepageSummaryComponent
   ],
   imports: [
     BrowserModule
