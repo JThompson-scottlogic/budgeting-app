@@ -6,7 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage-input.component.css']
 })
 export class HomepageInputComponent implements OnInit {
+  incoming = false;
+  outgoing = false;
 
+  onChangeIncoming = () => {
+    this.incoming = true;
+    this.outgoing = false;
+  };
+
+  onChangeOutgoing = () => {
+    this.incoming = false;
+    this.outgoing = true;
+  };
   constructor() { }
 
   ngOnInit(): void {

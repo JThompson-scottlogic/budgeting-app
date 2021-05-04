@@ -3,4 +3,5 @@ export interface BudgetItem {
     category: string;
     amount: number;
     id: number;
+    month: string;
 }
