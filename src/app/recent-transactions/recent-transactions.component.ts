@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MOCKITEMS } from '../mockItems';
 
 @Component({
   selector: 'app-recent-transactions',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recent-transactions.component.css']
 })
 export class RecentTransactionsComponent implements OnInit {
+  
+  mockItems = MOCKITEMS;
   
   constructor() { }
 

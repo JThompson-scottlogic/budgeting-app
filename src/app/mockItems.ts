@@ -1,6 +1,6 @@
 import { BudgetItem } from "./budgetItem";
 
-export const mockItems: BudgetItem[] = [
+export const MOCKITEMS: BudgetItem[] = [
     {description: 'item1', category:'games', amount: 100, id: 0 },
     {description: 'item2', category:'groceries', amount: 30, id: 1},
     {description: 'item3', category:'bills', amount: 165.75, id: 2},

@@ -1,1 +1,8 @@
-<p>recent-transactions works!</p>
+<ul>
+    <li *ngFor='let item of mockItems'>
+        <span>Description: {{item.description}}</span>
+        <span>Category: {{item.category}}</span>
+        <span>Amount: {{item.amount}}</span>
+        <hr>
+    </li>
+</ul>
