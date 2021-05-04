@@ -1,1 +1,37 @@
-<p>homepage-input works!</p>
+<h3>Add a transaction</h3>
+
+<form>
+    <input type='radio' name='inOrOut' id='in' value='in'>
+    <label for='in'>In</label>
+    <input type='radio' name='inOrOut' id='out' value='out'>
+    <label for='out'>Out</label><br>
+    <label for="description">Description:</label>
+    <input type='text' name='description' id='description'>
+    <label for='outgoing-category'>Category:</label>
+    <select id='outgoing-category' name='outgoing-category'>
+        <optgroup label='Essentials'>
+            <option value='groceries'>Groceries</option>
+            <option value='rent'>Rent</option>
+            <option value='bills'>Bills</option>
+            <option value='petrol'>Petrol</option>
+            <option value='savings'>Savings</option>
+            <option value='phone'>Phone bill</option>
+            <option value='car'>Car costs</option>
+        </optgroup>
+        <optgroup label='Extras'>
+            <option value='giving'>Giving</option>
+            <option value='gym'>Gym</option>
+            <option value='eatingOut'>Eating or Drinking out</option>
+            <option value='games'>Games</option>
+            <option value='subscription'>Subscription</option>
+            <option value='misc'>Misc</option>
+        </optgroup>
+    </select>
+    <label for='incoming-category'>Category:</label>
+    <select id='incoming-category' name='outgoing-category'>
+        <option value='salary'>Salary</option>
+        <option value='directDebit'>Direct debit</option>
+        <option value='expenses'>Expenses</option>
+        <option value='giftsOther'>Gifts/other</option>
+    </select>
+</form>
