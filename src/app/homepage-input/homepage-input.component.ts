@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsService } from '../items.service';
 
 @Component({
   selector: 'app-homepage-input',
@@ -18,9 +19,15 @@ export class HomepageInputComponent implements OnInit {
     this.incoming = false;
     this.outgoing = true;
   };
-  constructor() { }
+
+  onSubmit():void {
+    this.itemsService.getBiggestId();
+
+  }
+  constructor(public itemsService: ItemsService) { }
 
   ngOnInit(): void {
   }
+
 
 }

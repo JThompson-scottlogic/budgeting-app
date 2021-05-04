@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BudgetItem } from '../budgetItem';
 import { MOCKITEMS } from '../mockItems';
+import { ItemsService } from '../items.service'
 
 @Component({
   selector: 'app-recent-transactions',
@@ -11,12 +12,10 @@ export class RecentTransactionsComponent implements OnInit {
   
   mockItems = MOCKITEMS;
 
-  itemsList: BudgetItem[] = [
-    {description: 'listItem1', amount: 100, id: 8, category: 'groceries'}
-  ]
-  constructor() { }
+  constructor(public itemsService: ItemsService) { }
 
   ngOnInit(): void {
   }
 
+  itemsList = this.itemsService.getAll();
 }

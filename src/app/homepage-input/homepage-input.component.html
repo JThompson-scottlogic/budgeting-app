@@ -1,15 +1,15 @@
 <h3>Add a transaction</h3>
 
-<form>
+<form #inputForm='ngForm' (ngSubmit)='onSubmit()'>
     <input type='radio' name='inOrOut' id='in' value='in' (change)='onChangeIncoming()'>
     <label for='in'>In</label>
     <input type='radio' name='inOrOut' id='out' value='out' (change)='onChangeOutgoing()'>
     <label for='out'>Out</label><br>
     <label for="description">Description: </label>
-    <input type='text' name='description' id='description'>
+    <input type='text' name='description' id='description' #description>
     <div style='display:inline' *ngIf='outgoing'>
         <label for='outgoing-category'>Category: </label>
-        <select id='outgoing-category' name='outgoing-category'>
+        <select id='outgoing-category' name='outgoing-category' #outgoingCategory>
             <optgroup label='Essentials'>
                 <option value='groceries'>Groceries</option>
                 <option value='rent'>Rent</option>
@@ -31,7 +31,7 @@
     </div>
     <div style='display:inline' *ngIf='incoming'>
         <label for='incoming-category'>Category: </label>
-        <select id='incoming-category' name='outgoing-category'>
+        <select id='incoming-category' name='outgoing-category' #incomingCategory>
             <option value='salary'>Salary</option>
             <option value='directDebit'>Direct debit</option>
             <option value='expenses'>Expenses</option>
@@ -39,10 +39,10 @@
         </select>
     </div>
     <label for='amount'>Amount: </label>
-    <input type='number' name='amount' id='amount'>
+    <input type='number' name='amount' id='amount' #amount>
     <div style='display:inline'>
         <label for='month'>Month:</label>
-        <select id='month' name='month'>
+        <select id='month' name='month' #month>
             <option value='january'>January</option>
             <option value='february'>February</option>
             <option value='march'>March</option>

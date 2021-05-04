@@ -8,6 +8,7 @@ import { RecentTransactionsComponent } from './recent-transactions/recent-transa
 import { HomePageComponent } from './home-page/home-page.component';
 import { HomepageInputComponent } from './homepage-input/homepage-input.component';
 import { HomepageSummaryComponent } from './homepage-summary/homepage-summary.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomepageSummaryComponent } from './homepage-summary/homepage-summary.co
     HomepageSummaryComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

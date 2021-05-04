@@ -12,7 +12,8 @@ export class TitleComponent implements OnInit {
     description: 'A tasty schnack',
     category: 'food',
     amount: 3.70,
-    id: 1
+    id: 1,
+    month: 'july'
   }
   constructor() { }
 

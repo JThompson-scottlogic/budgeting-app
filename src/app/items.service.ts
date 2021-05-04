@@ -20,4 +20,10 @@ export class ItemsService {
     this.itemsList.push(item);
     console.log('item added');
   }
+
+  getBiggestId = (): number => {
+  const biggestId = Math.max.apply(Math, this.itemsList.map(function(o){return o.id}))
+  console.log(biggestId);
+  return(biggestId);
+  }
 }
