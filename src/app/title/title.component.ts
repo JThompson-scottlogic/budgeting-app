@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BudgetItem } from '../budgetItem';
 
 @Component({
   selector: 'app-title',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitleComponent implements OnInit {
   title='Homepage';
-
+  exampleBudgetItem : BudgetItem = {
+    description: 'A tasty schnack',
+    category: 'food',
+    amount: 3.70,
+    id: 1
+  }
   constructor() { }
 
   ngOnInit(): void {
