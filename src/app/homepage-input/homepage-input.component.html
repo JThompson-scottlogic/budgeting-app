@@ -1,41 +1,33 @@
 <h3>Add a transaction</h3>
 
-<form #inputForm='ngForm' (ngSubmit)='onSubmit()'>
+<form (ngSubmit)='onSubmit(description.value, outgoingCategory.value, month.value, amount.value)'>
     <input type='radio' name='inOrOut' id='in' value='in' (change)='onChangeIncoming()'>
     <label for='in'>In</label>
     <input type='radio' name='inOrOut' id='out' value='out' (change)='onChangeOutgoing()'>
     <label for='out'>Out</label><br>
     <label for="description">Description: </label>
     <input type='text' name='description' id='description' #description>
-    <div style='display:inline' *ngIf='outgoing'>
+    <div style='display:inline'>
         <label for='outgoing-category'>Category: </label>
-        <select id='outgoing-category' name='outgoing-category' #outgoingCategory>
+        <select id='outgoing-category' name='outgoingcategory' #outgoingCategory>
             <optgroup label='Essentials'>
-                <option value='groceries'>Groceries</option>
-                <option value='rent'>Rent</option>
-                <option value='bills'>Bills</option>
-                <option value='petrol'>Petrol</option>
-                <option value='savings'>Savings</option>
-                <option value='phone'>Phone bill</option>
-                <option value='car'>Car costs</option>
+                <option *ngFor='let outgoingEssential of outgoingEssentials' [value]='outgoingEssential'>
+                    {{outgoingEssential.charAt(0).toUpperCase() + outgoingEssential.slice(1)}}
+                </option>
             </optgroup>
             <optgroup label='Extras'>
-                <option value='giving'>Giving</option>
-                <option value='gym'>Gym</option>
-                <option value='eatingOut'>Eating or Drinking out</option>
-                <option value='games'>Games</option>
-                <option value='subscription'>Subscription</option>
-                <option value='misc'>Misc</option>
+                <option *ngFor='let outgoingExtra of outgoingExtras' [value]='outgoingExtra'>
+                    {{outgoingExtra.charAt(0).toUpperCase() + outgoingExtra.slice(1)}}
+                </option>
             </optgroup>
         </select>
     </div>
     <div style='display:inline' *ngIf='incoming'>
         <label for='incoming-category'>Category: </label>
-        <select id='incoming-category' name='outgoing-category' #incomingCategory>
-            <option value='salary'>Salary</option>
-            <option value='directDebit'>Direct debit</option>
-            <option value='expenses'>Expenses</option>
-            <option value='giftsOther'>Gifts/other</option>
+        <select id='incoming-category' name='ingoing-category'  #incomingCategory >
+            <option *ngFor='let oneIncomingOption of incomingOptions' [value]='oneIncomingOption'>
+                {{oneIncomingOption.charAt(0).toUpperCase() + oneIncomingOption.slice(1)}}
+            </option>
         </select>
     </div>
     <label for='amount'>Amount: </label>
@@ -43,18 +35,7 @@
     <div style='display:inline'>
         <label for='month'>Month:</label>
         <select id='month' name='month' #month>
-            <option value='january'>January</option>
-            <option value='february'>February</option>
-            <option value='march'>March</option>
-            <option value='april'>April</option>
-            <option value='may'>May</option>
-            <option value='june'>June</option>
-            <option value='july'>July</option>
-            <option value='august'>August</option>
-            <option value='september'>September</option>
-            <option value='october'>October</option>
-            <option value='november'>November</option>
-            <option value='december'>December</option>
+            <option *ngFor='let oneMonth of months' [value]='oneMonth'>{{oneMonth.charAt(0).toUpperCase() + oneMonth.slice(1)}}</option>
         </select>
     </div>
     <input type='submit'>

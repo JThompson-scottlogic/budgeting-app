@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { BudgetItem } from '../budgetItem';
 import { ItemsService } from '../items.service';
 
 @Component({
@@ -10,6 +12,22 @@ export class HomepageInputComponent implements OnInit {
   incoming = false;
   outgoing = false;
 
+  months:string[] = [
+    'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
+  ]; 
+  
+  incomingOptions:string[] = [
+    'salary', 'directDebit', 'expenses', 'gifts/other'
+  ];
+
+  outgoingEssentials:string[] = [
+    'groceries', 'rent', 'bills', 'petrol', 'savings', 'phone', 'car'
+  ];
+
+  outgoingExtras:string[] = [
+    'giving', 'gym', 'eatingOut', 'games', 'subscription','misc'
+  ];
+
   onChangeIncoming = () => {
     this.incoming = true;
     this.outgoing = false;
@@ -20,8 +38,18 @@ export class HomepageInputComponent implements OnInit {
     this.outgoing = true;
   };
 
-  onSubmit():void {
-    this.itemsService.getBiggestId();
+  onSubmit(description:string, category:string, month:string, amount:string):void {
+    const id:number = this.itemsService.getBiggestId();
+    const newAmount:number = parseFloat(amount);
+    const newItem:BudgetItem = {
+      description: description,
+      category: category,
+      month: month,
+      amount: newAmount,
+      id: id,
+    }
+    this.itemsService.addNewItem(newItem);
+    console.log(this.itemsService.getAll());
 
   }
   constructor(public itemsService: ItemsService) { }
