@@ -1,6 +1,6 @@
 <h3>Add a transaction</h3>
 
-<form (ngSubmit)='onSubmit(description.value, incomingCategory.value, outgoingCategory.value, month.value, amount.value)'>
+<form (ngSubmit)='onSubmit(description.value, incomingCategory.value, outgoingCategory.value, month.value, amount.value); description.value=""; '>
     <input type='radio' name='inOrOut' id='in' value='in' (change)='onChangeIncoming()'>
     <label for='in'>In</label>
     <input type='radio' name='inOrOut' id='out' value='out' (change)='onChangeOutgoing()'>
@@ -8,6 +8,7 @@
     <label for="description">Description: </label>
     <input type='text' name='description' id='description' #description>
     <div style='display:inline' [style.visibility]='outgoing? "visible" : "hidden"'>
+        <label for='outgoing-category'>Category: </label>
         <select id='outgoing-category' name='outgoingcategory' #outgoingCategory>
             <optgroup label='Essentials'>
                 <option *ngFor='let outgoingEssential of outgoingEssentials' [value]='outgoingEssential'>
@@ -29,6 +30,7 @@
             </option>
         </select>
     </div>
+    <br>
     <label for='amount'>Amount: </label>
     <input type='number' name='amount' id='amount' #amount>
     <div style='display:inline'>

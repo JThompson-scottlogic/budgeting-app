@@ -10,12 +10,11 @@ import { ItemsService } from '../items.service'
 })
 export class RecentTransactionsComponent implements OnInit {
   
-  mockItems = MOCKITEMS;
-
+  itemsList = this.itemsService.getAll();
+  
   constructor(public itemsService: ItemsService) { }
 
   ngOnInit(): void {
   }
 
-  itemsList = this.itemsService.getAll();
 }
