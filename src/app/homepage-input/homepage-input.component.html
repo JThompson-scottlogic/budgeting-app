@@ -1,14 +1,13 @@
 <h3>Add a transaction</h3>
 
-<form (ngSubmit)='onSubmit(description.value, outgoingCategory.value, month.value, amount.value)'>
+<form (ngSubmit)='onSubmit(description.value, incomingCategory.value, outgoingCategory.value, month.value, amount.value)'>
     <input type='radio' name='inOrOut' id='in' value='in' (change)='onChangeIncoming()'>
     <label for='in'>In</label>
     <input type='radio' name='inOrOut' id='out' value='out' (change)='onChangeOutgoing()'>
     <label for='out'>Out</label><br>
     <label for="description">Description: </label>
     <input type='text' name='description' id='description' #description>
-    <div style='display:inline'>
-        <label for='outgoing-category'>Category: </label>
+    <div style='display:inline' [style.visibility]='outgoing? "visible" : "hidden"'>
         <select id='outgoing-category' name='outgoingcategory' #outgoingCategory>
             <optgroup label='Essentials'>
                 <option *ngFor='let outgoingEssential of outgoingEssentials' [value]='outgoingEssential'>
@@ -22,7 +21,7 @@
             </optgroup>
         </select>
     </div>
-    <div style='display:inline' *ngIf='incoming'>
+    <div style='display:inline' [style.visibility]='incoming? "visible" : "hidden" '>
         <label for='incoming-category'>Category: </label>
         <select id='incoming-category' name='ingoing-category'  #incomingCategory >
             <option *ngFor='let oneIncomingOption of incomingOptions' [value]='oneIncomingOption'>

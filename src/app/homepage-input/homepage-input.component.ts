@@ -38,18 +38,30 @@ export class HomepageInputComponent implements OnInit {
     this.outgoing = true;
   };
 
-  onSubmit(description:string, category:string, month:string, amount:string):void {
+  onSubmit(description:string, incomingCategory:string, outgoingCategory:string, month:string, amount:string):void {
     const id:number = this.itemsService.getBiggestId();
     const newAmount:number = parseFloat(amount);
-    const newItem:BudgetItem = {
-      description: description,
-      category: category,
-      month: month,
-      amount: newAmount,
-      id: id,
+    if (this.incoming) {
+      const newItem:BudgetItem = {
+        description: description,
+        category: incomingCategory,
+        month: month,
+        amount: -newAmount,
+        id: id,
+      }
+      this.itemsService.addNewItem(newItem);
+      console.log(this.itemsService.getAll());
+    } else {
+      const newItem:BudgetItem = {
+        description: description,
+        category: outgoingCategory,
+        month: month,
+        amount: newAmount,
+        id: id,
+      }
+      this.itemsService.addNewItem(newItem);
+      console.log(this.itemsService.getAll());
     }
-    this.itemsService.addNewItem(newItem);
-    console.log(this.itemsService.getAll());
 
   }
   constructor(public itemsService: ItemsService) { }
