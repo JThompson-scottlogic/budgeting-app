@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsService } from '../items.service';
+import { BudgetItem } from '../budgetItem';
 
 @Component({
   selector: 'app-homepage-summary',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageSummaryComponent implements OnInit {
 
-  constructor() { }
+  months:string[] = [
+    'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
+  ]; 
+  
+
+  calculateAmountIn = (month:string):number => {
+    const monthTransactions:BudgetItem[] = this.itemsService.getItemsByMonth(month);
+    const monthTransactionsIn:BudgetItem[] = monthTransactions.filter(item => item.amount < 0);
+    const monthTransactionsNumber:number[] = monthTransactionsIn.map(item => item.amount);
+    return (- monthTransactionsNumber.reduce((a,b) => a + b, 0));
+  }
+  
+  calculateAmountOut = (month:string):number => {
+    const monthTransactions:BudgetItem[] = this.itemsService.getItemsByMonth(month);
+    const monthTransactionsOut:BudgetItem[] = monthTransactions.filter(item => item.amount > 0);
+    const monthTransactionsNumber:number[] = monthTransactionsOut.map(item => item.amount);
+    return (monthTransactionsNumber.reduce((a,b) => a + b, 0));
+  }
+  
+  constructor(public itemsService: ItemsService) { }
 
   ngOnInit(): void {
+    const date = new Date();
   }
 
 }
