@@ -10,9 +10,11 @@ import { ItemsService } from '../items.service'
 })
 export class RecentTransactionsComponent implements OnInit {
   
-  itemsList = this.itemsService.getAll();
+  itemsList:BudgetItem[];
   
-  constructor(public itemsService: ItemsService) { }
+  constructor(public itemsService: ItemsService) {
+    itemsService.getLatestItems().subscribe((itemsList) => {this.itemsList = itemsList});
+   }
 
   ngOnInit(): void {
   }

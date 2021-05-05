@@ -50,7 +50,6 @@ export class HomepageInputComponent implements OnInit {
         id: id,
       }
       this.itemsService.addNewItem(newItem);
-      console.log(this.itemsService.getAll());
     } else {
       const newItem:BudgetItem = {
         description: description,
@@ -60,7 +59,6 @@ export class HomepageInputComponent implements OnInit {
         id: id,
       }
       this.itemsService.addNewItem(newItem);
-      console.log(this.itemsService.getAll());
     }
 
   }
