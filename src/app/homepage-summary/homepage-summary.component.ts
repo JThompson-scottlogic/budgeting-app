@@ -12,7 +12,8 @@ export class HomepageSummaryComponent implements OnInit {
   months:string[] = [
     'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
   ]; 
-  
+
+  date = new Date();  
 
   calculateAmountIn = (month:string):number => {
     const monthTransactions:BudgetItem[] = this.itemsService.getItemsByMonth(month);
@@ -31,7 +32,6 @@ export class HomepageSummaryComponent implements OnInit {
   constructor(public itemsService: ItemsService) { }
 
   ngOnInit(): void {
-    const date = new Date();
   }
 
 }
