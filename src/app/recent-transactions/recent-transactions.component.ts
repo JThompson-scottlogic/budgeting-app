@@ -11,6 +11,10 @@ import { ItemsService } from '../items.service'
 export class RecentTransactionsComponent implements OnInit {
   
   itemsList:BudgetItem[];
+
+  formatAmount = (amount:number):number => (
+    Math.floor(amount*100)/100
+  )
   
   constructor(public itemsService: ItemsService) {
     itemsService.getLatestItems().subscribe((itemsList) => {this.itemsList = itemsList});

@@ -1,12 +1,12 @@
 <h3>Add a transaction</h3>
 
-<form (ngSubmit)='onSubmit(description.value, incomingCategory.value, outgoingCategory.value, month.value, amount.value); description.value=""; amount.value=""; month.value="january"'>
+<form #itemForm='ngForm' (ngSubmit)='onSubmit(description.value, incomingCategory.value, outgoingCategory.value, month.value, amount.value); description.value=""; amount.value=""; month.value="january"; '>
     <input type='radio' name='inOrOut' id='in' value='in' (change)='onChangeIncoming()'>
     <label for='in'>In</label>
     <input type='radio' name='inOrOut' id='out' value='out' (change)='onChangeOutgoing()'>
     <label for='out'>Out</label><br>
     <label for="description">Description: </label>
-    <input type='text' name='description' id='description' #description>
+    <input type='text' name='description' id='description' ngModel required #description>
     <div style='display:inline' [style.visibility]='outgoing? "visible" : "hidden"'>
         <label for='outgoing-category'>Category: </label>
         <select id='outgoing-category' name='outgoingcategory' #outgoingCategory>
@@ -32,12 +32,12 @@
     </div>
     <br>
     <label for='amount'>Amount: </label>
-    <input type='number' name='amount' id='amount' #amount>
+    <input type='number' name='amount' id='amount' ngModel required #amount>
     <div style='display:inline'>
         <label for='month'>Month:</label>
         <select id='month' name='month' #month>
             <option *ngFor='let oneMonth of months' [value]='oneMonth'>{{oneMonth.charAt(0).toUpperCase() + oneMonth.slice(1)}}</option>
         </select>
     </div>
-    <input type='submit'>
+    <input type='submit' [disabled]='itemForm.form.invalid'>
 </form>
