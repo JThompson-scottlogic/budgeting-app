@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { GraphsHomeComponent } from './graphs-home/graphs-home.component';
 import { TransactionsHomeComponent } from './transactions-home/transactions-home.component';
+import { TransactionsFilteringComponent } from './transactions-filtering/transactions-filtering.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TransactionsHomeComponent } from './transactions-home/transactions-home
     HomepageInputComponent,
     HomepageSummaryComponent,
     GraphsHomeComponent,
-    TransactionsHomeComponent
+    TransactionsHomeComponent,
+    TransactionsFilteringComponent
   ],
   imports: [
     BrowserModule,
