@@ -15,6 +15,10 @@ export class HomepageSummaryComponent implements OnInit {
 
   date = new Date();  
 
+  formatAmount = (amount:number):number => (
+    Math.floor(amount*100)/100
+  )
+
   calculateAmountIn = (month:string):number => {
     const monthTransactions:BudgetItem[] = this.itemsService.getItemsByMonth(month);
     const monthTransactionsIn:BudgetItem[] = monthTransactions.filter(item => item.amount < 0);
