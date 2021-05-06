@@ -11,10 +11,12 @@ export class TransactionsFilteringComponent implements OnInit {
     'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
   ]; 
   date = new Date();
+  isFormSent = false;
 
   onSubmit(month:string, type:string):void {
     console.log(month);
     console.log(type);
+    this.isFormSent = true;
   }
   constructor() { }
   

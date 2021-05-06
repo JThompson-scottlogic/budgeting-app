@@ -15,5 +15,6 @@
 
     <input type='submit' [disabled]='selectMonth.form.invalid'>
 </form>
-
-<app-transactions-month-summary [month]='transactionMonth.value' [type]='transactionType.value'></app-transactions-month-summary>
+<div *ngIf='isFormSent'>
+    <app-transactions-month-summary [month]='transactionMonth.value' [type]='transactionType.value'></app-transactions-month-summary>
+</div>
