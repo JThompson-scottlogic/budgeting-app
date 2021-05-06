@@ -50,4 +50,10 @@ export class ItemsService {
       }
     ))
   }
+
+  deleteItemById = (id:number):void => {
+    this.itemsList.splice(this.itemsList.findIndex((item) => item.id === id) , 1)
+    this.itemsListObservable$.next(this.itemsList);
+    console.log(`item with id ${id} deleted`);
+  }
 }

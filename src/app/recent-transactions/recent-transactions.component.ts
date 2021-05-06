@@ -15,6 +15,10 @@ export class RecentTransactionsComponent implements OnInit {
   formatAmount = (amount:number):number => (
     Math.floor(amount*100)/100
   )
+
+  deleteItemById = (id:number):void => {
+    this.itemsService.deleteItemById(id);
+  }
   
   constructor(public itemsService: ItemsService) {
     itemsService.getLatestItems().subscribe((itemsList) => {this.itemsList = itemsList});
