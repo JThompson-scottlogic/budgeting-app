@@ -9,6 +9,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HomepageInputComponent } from './homepage-input/homepage-input.component';
 import { HomepageSummaryComponent } from './homepage-summary/homepage-summary.component';
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

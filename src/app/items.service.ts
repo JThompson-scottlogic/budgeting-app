@@ -28,7 +28,7 @@ export class ItemsService {
     console.log('item added');
   }
 
-  getBiggestId = (): number => {
+  getBiggestId = ():number => {
   const biggestId = Math.max.apply(Math, this.itemsList.map(function(o){return o.id}))
   console.log(biggestId);
   return(biggestId);
