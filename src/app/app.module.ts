@@ -10,6 +10,8 @@ import { HomepageInputComponent } from './homepage-input/homepage-input.componen
 import { HomepageSummaryComponent } from './homepage-summary/homepage-summary.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { GraphsHomeComponent } from './graphs-home/graphs-home.component';
+import { TransactionsHomeComponent } from './transactions-home/transactions-home.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { AppRoutingModule } from './app-routing.module';
     RecentTransactionsComponent,
     HomePageComponent,
     HomepageInputComponent,
-    HomepageSummaryComponent
+    HomepageSummaryComponent,
+    GraphsHomeComponent,
+    TransactionsHomeComponent
   ],
   imports: [
     BrowserModule,
