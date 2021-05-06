@@ -1,0 +1,19 @@
+<form #selectMonth='ngForm' (ngSubmit)='onSubmit(transactionMonth.value, transactionType.value)'>
+    <!-- Add years!! -->
+    <label for=transactionMonth>Select month: </label>
+    <select id='transactionMonth' name='transactionMonth' required ngModel #transactionMonth>
+        <option *ngFor='let oneMonth of months' [value]='oneMonth'>{{oneMonth.charAt(0).toUpperCase() + oneMonth.slice(1)}}</option>
+    </select>
+
+    <label for='inOutOrAll'>Choose transaction type: </label>
+    <select id='transactionType' name='transactionType' required ngModel #transactionType>
+        <option value='all' selected='selected'>All</option>
+        <option value='in'>In</option>
+        <option value='out'>Out</option>
+    </select>
+
+
+    <input type='submit' [disabled]='selectMonth.form.invalid'>
+</form>
+
+<app-transactions-month-summary [month]='transactionMonth.value' [type]='transactionType.value'></app-transactions-month-summary>

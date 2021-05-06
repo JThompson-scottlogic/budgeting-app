@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { GraphsHomeComponent } from './graphs-home/graphs-home.component';
 import { TransactionsHomeComponent } from './transactions-home/transactions-home.component';
 import { TransactionsFilteringComponent } from './transactions-filtering/transactions-filtering.component';
+import { TransactionsMonthSummaryComponent } from './transactions-month-summary/transactions-month-summary.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TransactionsFilteringComponent } from './transactions-filtering/transac
     HomepageSummaryComponent,
     GraphsHomeComponent,
     TransactionsHomeComponent,
-    TransactionsFilteringComponent
+    TransactionsFilteringComponent,
+    TransactionsMonthSummaryComponent
   ],
   imports: [
     BrowserModule,
