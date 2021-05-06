@@ -43,9 +43,9 @@ export class ItemsService {
     return this.itemsListObservable$.pipe(map(
       itemsList => {
         if (itemsList.length <= 15){
-          return itemsList.reverse()
-        } else {
-          return itemsList.slice(-15).reverse();
+          return itemsList.sort((a, b) => b.id - a.id)
+          } else {
+          return itemsList.slice(-15).sort((a,b) => b.id - a.id);
         }
       }
     ))

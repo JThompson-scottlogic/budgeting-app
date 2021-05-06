@@ -39,7 +39,7 @@ export class HomepageInputComponent implements OnInit {
   };
 
   onSubmit(description:string, incomingCategory:string, outgoingCategory:string, month:string, amount:string):void {
-    const id:number = this.itemsService.getBiggestId();
+    const id:number = this.itemsService.getBiggestId() + 1;
     const newAmount:number = parseFloat(amount);
     if (this.incoming) {
       const newItem:BudgetItem = {
