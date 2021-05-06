@@ -1,6 +1,6 @@
 <h3>Add a transaction</h3>
 
-<form (ngSubmit)='onSubmit(description.value, incomingCategory.value, outgoingCategory.value, month.value, amount.value); description.value=""; '>
+<form (ngSubmit)='onSubmit(description.value, incomingCategory.value, outgoingCategory.value, month.value, amount.value); description.value=""; amount.value=""; month.value="january"'>
     <input type='radio' name='inOrOut' id='in' value='in' (change)='onChangeIncoming()'>
     <label for='in'>In</label>
     <input type='radio' name='inOrOut' id='out' value='out' (change)='onChangeOutgoing()'>
