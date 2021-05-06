@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BudgetItem } from '../budgetItem';
-import { MOCKITEMS } from '../mockItems';
 import { ItemsService } from '../items.service'
 
 @Component({

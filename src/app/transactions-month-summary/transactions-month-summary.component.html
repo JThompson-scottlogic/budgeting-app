@@ -1,1 +1,10 @@
-<p>transactions-month-summary works!</p>
+<ul>
+    <li *ngFor='let item of itemsList'>
+        <span>Description: {{item.description}}</span>&nbsp;
+        <span>Category: {{item.category}}</span>&nbsp;
+        <span>Amount: £{{formatAmount(item.amount)}}</span> &nbsp; 
+        <button (click)='deleteItemById(item.id)'>delete</button>
+        <hr>
+    </li>
+</ul>
+

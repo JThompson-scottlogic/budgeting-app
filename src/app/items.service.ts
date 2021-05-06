@@ -50,6 +50,17 @@ export class ItemsService {
       }
     ))
   }
+  getItemsByMonthAndType = (monthInput:string, type:string):Observable<BudgetItem[]> => {
+    return this.itemsListObservable$.pipe(map(itemsList => {
+      if (type === 'all') {
+        return itemsList.filter(item => item.month === monthInput)
+      } else if (type === 'out') {
+        return itemsList.filter(item => item.month === monthInput).filter(item => item.amount > 0)
+      } else {
+        return itemsList.filter(item => item.month === monthInput).filter(item => item.amount < 0)
+      }
+    }))
+  };
 
   deleteItemById = (id:number):void => {
     this.itemsList.splice(this.itemsList.findIndex((item) => item.id === id) , 1)
