@@ -14,8 +14,6 @@ export class TransactionsMonthSummaryComponent implements OnInit {
 
   itemsList:BudgetItem[];
 
-  otherItemsList:BudgetItem[];
-
   formatAmount = (amount:number):number => (
     Math.floor(amount*100)/100
   );

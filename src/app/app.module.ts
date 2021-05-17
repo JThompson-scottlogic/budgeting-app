@@ -14,6 +14,7 @@ import { GraphsHomeComponent } from './graphs-home/graphs-home.component';
 import { TransactionsHomeComponent } from './transactions-home/transactions-home.component';
 import { TransactionsFilteringComponent } from './transactions-filtering/transactions-filtering.component';
 import { TransactionsMonthSummaryComponent } from './transactions-month-summary/transactions-month-summary.component';
+import { TransactionsMonthInOutComponent } from './transactions-month-in-out/transactions-month-in-out.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TransactionsMonthSummaryComponent } from './transactions-month-summary/
     GraphsHomeComponent,
     TransactionsHomeComponent,
     TransactionsFilteringComponent,
-    TransactionsMonthSummaryComponent
+    TransactionsMonthSummaryComponent,
+    TransactionsMonthInOutComponent
   ],
   imports: [
     BrowserModule,
