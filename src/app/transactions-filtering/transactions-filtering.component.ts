@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsService } from '../items.service';
 
 @Component({
   selector: 'app-transactions-filtering',
@@ -17,8 +18,9 @@ export class TransactionsFilteringComponent implements OnInit {
     console.log(month);
     console.log(type);
     this.isFormSent = true;
+    this.itemsService.updateObservable(month, type);
   }
-  constructor() { }
+  constructor(public itemsService: ItemsService) { }
   
   ngOnInit(): void {
     

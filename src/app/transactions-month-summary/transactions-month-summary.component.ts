@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ItemsService } from '../items.service';
 import { BudgetItem } from '../budgetItem';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-transactions-month-summary',
@@ -20,7 +21,8 @@ export class TransactionsMonthSummaryComponent implements OnInit {
   );
   
   getItemsByMonthAndType():void {
-    this.itemsService.getItemsByMonthAndType(this.month, this.type).subscribe((itemsList) => {this.itemsList = itemsList})
+    this.itemsService.getAllObservable().subscribe((itemsList) => {this.itemsList = this.itemsService.getItemsByMonthAndType(itemsList);
+    console.log(itemsList)})
   }
   
   deleteItemById = (id:number):void => {

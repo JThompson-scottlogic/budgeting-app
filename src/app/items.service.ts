@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BudgetItem } from './budgetItem';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { map} from 'rxjs/operators';
+import { Observable, BehaviorSubject, fromEvent } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,17 +9,30 @@ import { map} from 'rxjs/operators';
 export class ItemsService {
 
   constructor() { }
-
+  
   itemsList: BudgetItem[] = [
     {description: 'listItem1', amount: 100, id: 8, category: 'groceries', month: 'may'},
     {description: 'item2', category:'groceries', amount: 30, id: 1, month: 'may'},
     {description: 'item3', category:'bills', amount: 165.75, id: 2, month: 'may'},
   ];
 
+  serviceMonth = '';
+  serviceType = '';
+
   itemsListObservable$:BehaviorSubject<BudgetItem[]> = new BehaviorSubject(this.itemsList);
 
   getAll = ():BudgetItem[] => {
     return this.itemsList;
+  }
+
+  getAllObservable = ():Observable<BudgetItem[]> => {
+    return this.itemsListObservable$;
+  };
+
+  updateObservable = (month:string, type:string):void => {
+    this.serviceMonth = month;
+    this.serviceType = type;
+    this.itemsListObservable$.next(this.itemsList);
   }
 
   addNewItem = (item:BudgetItem): void => {
@@ -50,16 +63,14 @@ export class ItemsService {
       }
     ))
   }
-  getItemsByMonthAndType = (monthInput:string, type:string):Observable<BudgetItem[]> => {
-    return this.itemsListObservable$.pipe(map(itemsList => {
-      if (type === 'all') {
-        return itemsList.filter(item => item.month === monthInput)
-      } else if (type === 'out') {
-        return itemsList.filter(item => item.month === monthInput).filter(item => item.amount > 0)
+  getItemsByMonthAndType = (itemsList:BudgetItem[]):BudgetItem[] => {
+      if (this.serviceType === 'all') {
+        return itemsList.filter(item => item.month === this.serviceMonth)
+      } else if (this.serviceType === 'out') {
+        return itemsList.filter(item => item.month === this.serviceMonth).filter(item => item.amount > 0)
       } else {
-        return itemsList.filter(item => item.month === monthInput).filter(item => item.amount < 0)
+        return itemsList.filter(item => item.month === this.serviceMonth).filter(item => item.amount < 0)
       }
-    }))
   };
 
   deleteItemById = (id:number):void => {
