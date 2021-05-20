@@ -1,6 +1,7 @@
 package com.scottlogic.budgeting;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
@@ -13,9 +14,19 @@ public class BudgetItem {
 
     private String category;
 
-    private float amount;
+    private double amount;
 
     private String month;
+
+    BudgetItem() {}
+
+    BudgetItem(int id, String description, String category, double amount, String month){
+      this.id = id;
+      this.description = description;
+      this.category = category;
+      this.amount = amount;
+      this.month = month;
+    }
 
     public int getId() {
         return id;
@@ -39,11 +50,11 @@ public class BudgetItem {
         this.category = category;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
