@@ -41,4 +41,21 @@ public class BudgetItemService {
     System.out.println(budgetItem);
     budgetItemRepository.save(budgetItem);
   }
+
+  public void deleteItemById(int id) {
+    budgetItemRepository.deleteById(id);
+  }
+
+  public List<BudgetItem> getItemsByMonth(String month) {
+    List<BudgetItem> itemsByMonth = new ArrayList<>();
+    List<BudgetItem> allItems = budgetItemRepository.findAll();
+
+    for (BudgetItem item : allItems ) {
+      if (item.getMonth().equals(month)) {
+        itemsByMonth.add(item);
+      }
+    }
+
+    return itemsByMonth;
+  }
 }
