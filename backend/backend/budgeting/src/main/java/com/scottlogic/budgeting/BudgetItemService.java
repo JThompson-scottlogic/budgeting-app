@@ -2,6 +2,7 @@ package com.scottlogic.budgeting;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,5 +20,25 @@ public class BudgetItemService {
 
   public BudgetItem getBudgetItemWithId(int id) {
     return budgetItemRepository.findById(id).orElseThrow(() -> new BudgetItemNotFoundException(id));
+  }
+
+  public void addNewBudgetItem(BudgetItem budgetItem) {
+    List<BudgetItem> itemList = budgetItemRepository.findAll();
+    List<Integer> itemListId = new ArrayList<>();
+    int maxId = 0;
+
+    for (BudgetItem item : itemList) {
+      itemListId.add(item.getId());
+    }
+
+    for (int id : itemListId) {
+      if (id > maxId) {
+        maxId = id;
+      }
+    }
+    budgetItem.setId(maxId + 1);
+
+    System.out.println(budgetItem);
+    budgetItemRepository.save(budgetItem);
   }
 }

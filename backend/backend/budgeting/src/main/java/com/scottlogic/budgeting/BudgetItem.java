@@ -2,12 +2,14 @@ package com.scottlogic.budgeting;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class BudgetItem {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
     private String description;
@@ -20,8 +22,7 @@ public class BudgetItem {
 
     BudgetItem() {}
 
-    BudgetItem(int id, String description, String category, double amount, String month){
-      this.id = id;
+    BudgetItem( String description, String category, double amount, String month){
       this.description = description;
       this.category = category;
       this.amount = amount;

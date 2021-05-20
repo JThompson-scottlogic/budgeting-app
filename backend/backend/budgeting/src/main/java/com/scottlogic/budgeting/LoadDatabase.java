@@ -15,16 +15,16 @@ public class LoadDatabase {
   CommandLineRunner initDatabase(BudgetItemRepository repository) {
     return args -> {
       log.info("Preloading " + repository.save(new BudgetItem(
-        0, "Description", "category", 50.00, "may"
+         "Description", "category", 50.00, "may"
       )));
       log.info("Preloading " + repository.save(new BudgetItem(
-        1, "description2", "category2", -12.67, "may"
+         "description2", "category2", -12.67, "may"
       )));
       log.info("Preloading " + repository.save(new BudgetItem(
-        2, "description3", "category3", 1834.42, "may"
+         "description3", "category3", 1834.42, "may"
       )));
       log.info("Preloading " + repository.save(new BudgetItem(
-        3, "description4", "category4", -200, "january"
+        "description4", "category4", -200, "january"
       )));
     };
   }
