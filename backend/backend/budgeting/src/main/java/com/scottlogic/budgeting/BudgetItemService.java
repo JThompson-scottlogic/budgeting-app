@@ -58,4 +58,14 @@ public class BudgetItemService {
 
     return itemsByMonth;
   }
+
+  public List<BudgetItem> getPagedMostRecentTransactions(int pageSize) {
+    List<BudgetItem> fullItemList = budgetItemRepository.findAll();
+    if (pageSize < fullItemList.size()) {
+      return fullItemList.subList(0, pageSize);
+    }
+    else {
+      return fullItemList;
+    }
+  }
 }
