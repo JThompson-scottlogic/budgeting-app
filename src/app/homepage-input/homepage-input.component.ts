@@ -1,3 +1,4 @@
+import { getAllLifecycleHooks } from '@angular/compiler/src/lifecycle_reflector';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BudgetItem } from '../budgetItem';
@@ -11,6 +12,8 @@ import { ItemsService } from '../items.service';
 export class HomepageInputComponent implements OnInit {
   incoming = false;
   outgoing = false;
+
+  itemList:BudgetItem[] = [];
 
   months:string[] = [
     'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
@@ -49,7 +52,8 @@ export class HomepageInputComponent implements OnInit {
         amount: -newAmount,
         id: id,
       }
-      this.itemsService.addNewItem(newItem);
+      this.itemsService.addNewItemApi(newItem);
+
     } else {
       const newItem:BudgetItem = {
         description: description,
@@ -58,7 +62,7 @@ export class HomepageInputComponent implements OnInit {
         amount: newAmount,
         id: id,
       }
-      this.itemsService.addNewItem(newItem);
+      this.itemsService.addNewItemApi(newItem);
     }
 
   }

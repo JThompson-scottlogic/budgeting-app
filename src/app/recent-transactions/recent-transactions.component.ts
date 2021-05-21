@@ -19,8 +19,10 @@ export class RecentTransactionsComponent implements OnInit {
     this.itemsService.deleteItemById(id);
   }
   
+  
   constructor(public itemsService: ItemsService) {
-    itemsService.getAll().subscribe((itemsList) => {this.itemsList = itemsList});
+    this.itemsService.getAll();
+    itemsService.itemsListObservable$.subscribe((itemsList) => {this.itemsList = itemsList});
    }
 
   ngOnInit(): void {

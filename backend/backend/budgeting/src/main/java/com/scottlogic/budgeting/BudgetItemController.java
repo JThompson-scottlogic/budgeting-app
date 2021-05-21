@@ -26,4 +26,9 @@ public class BudgetItemController {
   public void addBudgetItem(@RequestBody BudgetItem budgetItem) {
     budgetItemService.addNewBudgetItem(budgetItem);
   }
+
+  @DeleteMapping("deleteall")
+  public void deleteAllItems() {
+    this.budgetItemService.deleteAllItems();
+  }
 }

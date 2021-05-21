@@ -17,6 +17,7 @@ export class ItemsService {
     {description: 'item3', category:'bills', amount: 165.75, id: 2, month: 'may'},
   ];
 
+  baseUrl:string = 'http://localhost:8080'
   serviceMonth = '';
   serviceType = '';
 
@@ -26,9 +27,9 @@ export class ItemsService {
   //   return this.itemsList;
   // }
 
-  getAll = ():Observable<BudgetItem[]> => {
+  getAll = ():void => {
     const itemList = this.http.get<BudgetItem[]>('http://localhost:8080/getall');
-    return itemList;
+    itemList.subscribe(itemList => this.itemsListObservable$.next(itemList));
   }
 
   // getAllObservable = ():Observable<BudgetItem[]> => {
@@ -45,6 +46,11 @@ export class ItemsService {
     this.itemsList.push(item);
     this.itemsListObservable$.next(this.itemsList);
     console.log('item added');
+  }
+
+  addNewItemApi = (item:BudgetItem):void => {
+    const newPost = this.http.post<BudgetItem>(this.baseUrl, item);
+    newPost.subscribe(() => this.getAll());
   }
 
   getBiggestId = ():number => {

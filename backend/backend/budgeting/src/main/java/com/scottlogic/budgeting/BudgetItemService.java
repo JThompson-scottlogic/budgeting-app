@@ -68,4 +68,8 @@ public class BudgetItemService {
       return fullItemList;
     }
   }
+
+  public void deleteAllItems() {
+    budgetItemRepository.deleteAll();
+  }
 }

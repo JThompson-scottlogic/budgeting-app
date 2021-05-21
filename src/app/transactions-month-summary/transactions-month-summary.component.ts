@@ -19,8 +19,8 @@ export class TransactionsMonthSummaryComponent implements OnInit {
   );
   
   getItemsByMonthAndType():void {
-    this.itemsService.getAll().subscribe((itemsList) => {this.itemsList = this.itemsService.getItemsByMonthAndType(itemsList);
-    console.log(itemsList)})
+    // this.itemsService.getAll().subscribe((itemsList) => {this.itemsList = this.itemsService.getItemsByMonthAndType(itemsList);
+    // console.log(itemsList)})
   }
   
   deleteItemById = (id:number):void => {
