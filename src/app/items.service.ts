@@ -19,6 +19,7 @@ export class ItemsService {
   serviceType = '';
 
   itemsListObservable$:BehaviorSubject<BudgetItem[]> = new BehaviorSubject([]);
+  itemsByMonthAndType$:BehaviorSubject<BudgetItem[]> = new BehaviorSubject([]);
 
   getAll = ():void => {
     const itemList = this.http.get<BudgetItem[]>('http://localhost:8080/getall');

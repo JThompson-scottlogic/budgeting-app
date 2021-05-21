@@ -62,6 +62,32 @@ public class BudgetItemService {
 
     return itemsByMonth;
   }
+  public List<BudgetItem> getItemsByMonthAndType(String month, String type) {
+    List<BudgetItem> itemsByMonthAndType = new ArrayList<>();
+    List<BudgetItem> allItems = budgetItemRepository.findAll();
+
+    if (type.equals("all")) {
+      for (BudgetItem item : allItems) {
+        if (item.getMonth().equals(month)) {
+          itemsByMonthAndType.add(item);
+        }
+      } return itemsByMonthAndType;
+    }
+
+    else if (type.equals("out")){
+      for (BudgetItem item : allItems) {
+        if (item.getMonth().equals(month) && item.getAmount() >= 0) {
+          itemsByMonthAndType.add(item);
+        }
+      } return itemsByMonthAndType;
+    } else {
+      for (BudgetItem item : allItems) {
+        if (item.getMonth().equals(month) && item.getAmount() <= 0) {
+          itemsByMonthAndType.add(item);
+        }
+      } return itemsByMonthAndType;
+    }
+  }
 
   public List<BudgetItem> getPagedMostRecentTransactions(int pageSize) {
     List<BudgetItem> fullItemList = budgetItemRepository.findAll();
