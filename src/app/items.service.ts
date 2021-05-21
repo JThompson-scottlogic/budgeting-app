@@ -31,9 +31,9 @@ export class ItemsService {
     return itemList;
   }
 
-  getAllObservable = ():Observable<BudgetItem[]> => {
-    return this.itemsListObservable$;
-  };
+  // getAllObservable = ():Observable<BudgetItem[]> => {
+  //   return this.itemsListObservable$;
+  // };
 
   updateObservable = (month:string, type:string):void => {
     this.serviceMonth = month;

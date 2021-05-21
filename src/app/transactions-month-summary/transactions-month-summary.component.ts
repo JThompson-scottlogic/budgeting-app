@@ -19,7 +19,7 @@ export class TransactionsMonthSummaryComponent implements OnInit {
   );
   
   getItemsByMonthAndType():void {
-    this.itemsService.getAllObservable().subscribe((itemsList) => {this.itemsList = this.itemsService.getItemsByMonthAndType(itemsList);
+    this.itemsService.getAll().subscribe((itemsList) => {this.itemsList = this.itemsService.getItemsByMonthAndType(itemsList);
     console.log(itemsList)})
   }
   
