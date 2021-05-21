@@ -12,29 +12,18 @@ export class ItemsService {
   constructor(private http:HttpClient) { }
   
   itemsList: BudgetItem[] = [
-    {description: 'listItem1', amount: 100, id: 8, category: 'groceries', month: 'may'},
-    {description: 'item2', category:'groceries', amount: 30, id: 1, month: 'may'},
-    {description: 'item3', category:'bills', amount: 165.75, id: 2, month: 'may'},
   ];
 
   baseUrl:string = 'http://localhost:8080'
   serviceMonth = '';
   serviceType = '';
 
-  itemsListObservable$:BehaviorSubject<BudgetItem[]> = new BehaviorSubject(this.itemsList);
-
-  // getAll = ():BudgetItem[] => {
-  //   return this.itemsList;
-  // }
+  itemsListObservable$:BehaviorSubject<BudgetItem[]> = new BehaviorSubject([]);
 
   getAll = ():void => {
     const itemList = this.http.get<BudgetItem[]>('http://localhost:8080/getall');
     itemList.subscribe(itemList => this.itemsListObservable$.next(itemList));
   }
-
-  // getAllObservable = ():Observable<BudgetItem[]> => {
-  //   return this.itemsListObservable$;
-  // };
 
   updateObservable = (month:string, type:string):void => {
     this.serviceMonth = month;
@@ -42,13 +31,7 @@ export class ItemsService {
     this.itemsListObservable$.next(this.itemsList);
   }
 
-  addNewItem = (item:BudgetItem): void => {
-    this.itemsList.push(item);
-    this.itemsListObservable$.next(this.itemsList);
-    console.log('item added');
-  }
-
-  addNewItemApi = (item:BudgetItem):void => {
+  addNewItem = (item:BudgetItem):void => {
     const newPost = this.http.post<BudgetItem>(this.baseUrl, item);
     newPost.subscribe(() => this.getAll());
   }
@@ -86,8 +69,7 @@ export class ItemsService {
   };
 
   deleteItemById = (id:number):void => {
-    this.itemsList.splice(this.itemsList.findIndex((item) => item.id === id) , 1)
-    this.itemsListObservable$.next(this.itemsList);
-    console.log(`item with id ${id} deleted`);
+    const deletedItem = this.http.delete(`${this.baseUrl}/delete/${id}`);
+    deletedItem.subscribe(() => this.getAll());
   }
 }

@@ -31,4 +31,9 @@ public class BudgetItemController {
   public void deleteAllItems() {
     this.budgetItemService.deleteAllItems();
   }
+
+  @DeleteMapping("delete/{id}")
+  public void deleteById(@PathVariable int id){
+    budgetItemService.deleteItemById(id);
+  }
 }

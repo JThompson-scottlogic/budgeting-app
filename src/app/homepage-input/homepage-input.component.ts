@@ -52,7 +52,7 @@ export class HomepageInputComponent implements OnInit {
         amount: -newAmount,
         id: id,
       }
-      this.itemsService.addNewItemApi(newItem);
+      this.itemsService.addNewItem(newItem);
 
     } else {
       const newItem:BudgetItem = {
@@ -62,7 +62,7 @@ export class HomepageInputComponent implements OnInit {
         amount: newAmount,
         id: id,
       }
-      this.itemsService.addNewItemApi(newItem);
+      this.itemsService.addNewItem(newItem);
     }
 
   }
