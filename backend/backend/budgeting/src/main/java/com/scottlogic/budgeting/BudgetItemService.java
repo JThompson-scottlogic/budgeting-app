@@ -2,7 +2,9 @@ package com.scottlogic.budgeting;
 
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -15,7 +17,9 @@ public class BudgetItemService {
   }
 
   public List<BudgetItem> getAllBudgetItems() {
-    return budgetItemRepository.findAll();
+    List<BudgetItem> allItems = budgetItemRepository.findAll();
+    Collections.reverse(allItems);
+    return (allItems);
   }
 
   public BudgetItem getBudgetItemWithId(int id) {
