@@ -20,7 +20,7 @@ export class RecentTransactionsComponent implements OnInit {
   }
   
   constructor(public itemsService: ItemsService) {
-    itemsService.getLatestItems().subscribe((itemsList) => {this.itemsList = itemsList});
+    itemsService.getAll().subscribe((itemsList) => {this.itemsList = itemsList});
    }
 
   ngOnInit(): void {

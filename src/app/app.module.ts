@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TitleComponent } from './title/title.component';
 import { HomepageNavigationComponent } from './homepage-navigation/homepage-navigation.component';
@@ -33,6 +33,7 @@ import { TransactionsMonthInOutComponent } from './transactions-month-in-out/tra
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     AppRoutingModule,
   ],

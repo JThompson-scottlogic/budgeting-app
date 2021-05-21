@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { BudgetItem } from './budgetItem';
-import { Observable, BehaviorSubject, fromEvent } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, BehaviorSubject, fromEvent, throwError } from 'rxjs';
+import { map, catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemsService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
   
   itemsList: BudgetItem[] = [
     {description: 'listItem1', amount: 100, id: 8, category: 'groceries', month: 'may'},
@@ -21,8 +22,13 @@ export class ItemsService {
 
   itemsListObservable$:BehaviorSubject<BudgetItem[]> = new BehaviorSubject(this.itemsList);
 
-  getAll = ():BudgetItem[] => {
-    return this.itemsList;
+  // getAll = ():BudgetItem[] => {
+  //   return this.itemsList;
+  // }
+
+  getAll = ():Observable<BudgetItem[]> => {
+    const itemList = this.http.get<BudgetItem[]>('http://localhost:8080/getall');
+    return itemList;
   }
 
   getAllObservable = ():Observable<BudgetItem[]> => {
