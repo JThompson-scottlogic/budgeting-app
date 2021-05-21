@@ -42,11 +42,6 @@ export class ItemsService {
   return(biggestId);
   }
 
-  getItemsByMonth = (monthInput:string):BudgetItem[] => {
-    const newItemList:BudgetItem[] = this.itemsList.filter(item => item.month === monthInput);
-    return newItemList;
-  }
-
   getLatestItems = ():Observable<BudgetItem[]> => {
     return this.itemsListObservable$.pipe(map(
       itemsList => {

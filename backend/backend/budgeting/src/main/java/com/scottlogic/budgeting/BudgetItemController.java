@@ -36,4 +36,9 @@ public class BudgetItemController {
   public void deleteById(@PathVariable int id){
     budgetItemService.deleteItemById(id);
   }
+
+  @GetMapping("{month}")
+  public List<BudgetItem> getBudgetItemsByMonth(@PathVariable String month){
+    return budgetItemService.getItemsByMonth(month);
+  }
 }
