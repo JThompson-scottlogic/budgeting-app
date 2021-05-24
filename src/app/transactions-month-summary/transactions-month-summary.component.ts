@@ -13,7 +13,10 @@ export class TransactionsMonthSummaryComponent implements OnInit {
   @Input() type: string;
 
   itemsList:BudgetItem[];
-
+  date = new Date();
+  months:string[] = [
+    'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
+  ]; 
   formatAmount = (amount:number):number => (
     Math.floor(amount*100)/100
   );
@@ -27,10 +30,11 @@ export class TransactionsMonthSummaryComponent implements OnInit {
     this.itemsService.deleteItemById(id);
   }
   constructor(public itemsService: ItemsService) { 
+    itemsService.itemsByMonthAndType$.subscribe((itemsList) => {this.itemsList = itemsList})
   }
 
   ngOnInit(): void {
-    this.getItemsByMonthAndType()
+    this.itemsService.getItemsByMonthAndType(this.months[this.date.getMonth()], 'all');
   }
 
 }

@@ -8,9 +8,11 @@ import { ItemsService } from '../items.service';
   styleUrls: ['./transactions-month-in-out.component.css']
 })
 export class TransactionsMonthInOutComponent implements OnInit {
-  @Input() itemsList:BudgetItem[];
+  itemsList:BudgetItem[] = [];
 
-  constructor(public itemsService: ItemsService) { }
+  constructor(public itemsService: ItemsService) { 
+    this.itemsService.itemsByMonth$.subscribe((itemsList) => this.itemsList = itemsList)
+  }
 
   formatAmount = (amount:number):number => (
     Math.floor(amount*100)/100

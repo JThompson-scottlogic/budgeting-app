@@ -18,7 +18,8 @@ export class TransactionsFilteringComponent implements OnInit {
     console.log(month);
     console.log(type);
     this.isFormSent = true;
-    this.itemsService.updateObservable(month, type);
+    this.itemsService.getItemsByMonthAndType(month, type)
+    this.itemsService.getItemsByMonth(month);
   }
   constructor(public itemsService: ItemsService) { }
   

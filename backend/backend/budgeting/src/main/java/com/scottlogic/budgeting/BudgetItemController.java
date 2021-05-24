@@ -42,4 +42,9 @@ public class BudgetItemController {
     return budgetItemService.getItemsByMonthAndType(month, type);
   }
 
+  @GetMapping("getbymonth/{month}")
+  public List<BudgetItem> getItemsByMonth(@PathVariable String month) {
+    return budgetItemService.getItemsByMonth(month);
+  }
+
 }
