@@ -46,5 +46,8 @@ public class BudgetItemController {
   public List<BudgetItem> getItemsByMonth(@PathVariable String month) {
     return budgetItemService.getItemsByMonth(month);
   }
-
+  @GetMapping("getLargestId")
+  public int getLargestId() {
+    return budgetItemService.getLargestId();
+  }
 }

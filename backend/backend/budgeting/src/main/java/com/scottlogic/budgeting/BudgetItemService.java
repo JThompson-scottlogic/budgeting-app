@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -97,6 +98,17 @@ public class BudgetItemService {
     else {
       return fullItemList;
     }
+  }
+
+  public int getLargestId() {
+    List<BudgetItem> fullItemList = budgetItemRepository.findAll();
+    List<Integer> idList = new ArrayList<>();
+
+    for (BudgetItem item : fullItemList ) {
+      idList.add(item.getId());
+    }
+    Collections.sort(idList);
+    return idList.get(idList.size() -1);
   }
 
   public void deleteAllItems() {

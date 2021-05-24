@@ -71,6 +71,7 @@ export class ItemsService {
   deleteItemById = (id:number):void => {
     const deletedItem = this.http.delete(`${this.baseUrl}/delete/${id}`);
     deletedItem.subscribe(() => this.getAll());
-    deletedItem.subscribe(() => this.getItemsByMonthAndType(this.serviceMonth, this.serviceType));
+    deletedItem.subscribe(() => this.getItemsByMonthAndType(this.serviceMonth, this.serviceType))
+    deletedItem.subscribe(() => this.getItemsByMonth(this.serviceMonth));
   }
 }
