@@ -27,6 +27,12 @@ export class ItemsService {
     itemList.subscribe(itemList => this.itemsListObservable$.next(itemList));
   }
 
+  getSubscriber = ():void => {
+    this.getAll();
+    this.getItemsByMonthAndType(this.serviceMonth, this.serviceType);
+    this.getItemsByMonth(this.serviceMonth);
+  };
+
   getItemsByMonthAndType = (month:string, type:string):void => {
     this.serviceMonth = month;
     this.serviceType = type;
@@ -45,15 +51,10 @@ export class ItemsService {
   }
 
   addNewItem = (item:BudgetItem):void => {
+    console.log('I did it!');
     const newPost = this.http.post<BudgetItem>(this.baseUrl, item);
-    newPost.subscribe(() => this.getAll());
-    newPost.subscribe(() => this.getItemsByMonthAndType(this.serviceMonth, this.serviceType));
-  }
+    newPost.subscribe(() => this.getSubscriber());
 
-  getBiggestId = ():number => {
-  const biggestId = Math.max.apply(Math, this.itemsList.map(function(o){return o.id}))
-  console.log(biggestId);
-  return(biggestId);
   }
 
   getLatestItems = ():Observable<BudgetItem[]> => {
@@ -70,8 +71,6 @@ export class ItemsService {
 
   deleteItemById = (id:number):void => {
     const deletedItem = this.http.delete(`${this.baseUrl}/delete/${id}`);
-    deletedItem.subscribe(() => this.getAll());
-    deletedItem.subscribe(() => this.getItemsByMonthAndType(this.serviceMonth, this.serviceType))
-    deletedItem.subscribe(() => this.getItemsByMonth(this.serviceMonth));
+    deletedItem.subscribe(() => this.getSubscriber());
   }
 }

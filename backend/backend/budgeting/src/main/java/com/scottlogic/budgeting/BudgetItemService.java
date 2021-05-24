@@ -28,20 +28,21 @@ public class BudgetItemService {
   }
 
   public void addNewBudgetItem(BudgetItem budgetItem) {
-    List<BudgetItem> itemList = budgetItemRepository.findAll();
-    List<Integer> itemListId = new ArrayList<>();
-    int maxId = 0;
-
-    for (BudgetItem item : itemList) {
-      itemListId.add(item.getId());
-    }
-
-    for (int id : itemListId) {
-      if (id > maxId) {
-        maxId = id;
-      }
-    }
-    budgetItem.setId(maxId + 1);
+    System.out.println("I am working");
+//    List<BudgetItem> itemList = budgetItemRepository.findAll();
+//    List<Integer> itemListId = new ArrayList<>();
+//    int maxId = 0;
+//
+//    for (BudgetItem item : itemList) {
+//      itemListId.add(item.getId());
+//    }
+//
+//    for (int id : itemListId) {
+//      if (id > maxId) {
+//        maxId = id;
+//      }
+//    }
+//    budgetItem.setId(maxId + 1);
 
     System.out.println(budgetItem);
     budgetItemRepository.save(budgetItem);

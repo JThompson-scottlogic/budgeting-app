@@ -32,17 +32,18 @@ export class HomepageInputComponent implements OnInit {
   ];
 
   onChangeIncoming = () => {
+    console.log('in');
     this.incoming = true;
     this.outgoing = false;
   };
 
   onChangeOutgoing = () => {
+    console.log('out');
     this.incoming = false;
     this.outgoing = true;
   };
 
   onSubmit(description:string, incomingCategory:string, outgoingCategory:string, month:string, amount:string):void {
-    const id:number = this.itemsService.getBiggestId() + 1;
     const newAmount:number = parseFloat(amount);
     if (this.incoming) {
       const newItem:BudgetItem = {
@@ -50,8 +51,9 @@ export class HomepageInputComponent implements OnInit {
         category: incomingCategory,
         month: month,
         amount: -newAmount,
-        id: id,
+        id: 0,
       }
+      console.log('incoming item')
       this.itemsService.addNewItem(newItem);
 
     } else {
@@ -60,8 +62,9 @@ export class HomepageInputComponent implements OnInit {
         category: outgoingCategory,
         month: month,
         amount: newAmount,
-        id: id,
+        id: 0,
       }
+      console.log('outgoing item')
       this.itemsService.addNewItem(newItem);
     }
 
