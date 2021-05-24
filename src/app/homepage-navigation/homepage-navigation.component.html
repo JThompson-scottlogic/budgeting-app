@@ -1,6 +1,16 @@
-<div>
-    <nav>
-        <button routerLink='/graphs'>graphs</button>
-        <button routerLink='/transactions'>transactions</button>
-    </nav>
-</div>
+<nav>
+    <div class="ui buttons">
+        <div class="ui vertical animated button" routerLink='/graphs'>
+            <div class="visible content">graphs</div>
+            <div class="hidden content">
+                <i class="chart line icon"></i>
+            </div>
+        </div>
+        <div class="ui vertical animated button" routerLink='/transactions'>
+            <div class="visible content">transactions</div>
+            <div class="hidden content">
+                <i class="exchange icon"></i>
+            </div>
+        </div>
+    </div>
+</nav>

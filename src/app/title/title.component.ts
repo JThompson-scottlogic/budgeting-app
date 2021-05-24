@@ -8,13 +8,7 @@ import { BudgetItem } from '../budgetItem';
 })
 export class TitleComponent implements OnInit {
   title='Homepage';
-  exampleBudgetItem : BudgetItem = {
-    description: 'A tasty schnack',
-    category: 'food',
-    amount: 3.70,
-    id: 1,
-    month: 'july'
-  }
+  
   constructor() { }
 
   ngOnInit(): void {

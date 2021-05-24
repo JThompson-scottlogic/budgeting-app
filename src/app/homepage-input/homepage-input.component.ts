@@ -32,13 +32,11 @@ export class HomepageInputComponent implements OnInit {
   ];
 
   onChangeIncoming = () => {
-    console.log('in');
     this.incoming = true;
     this.outgoing = false;
   };
 
   onChangeOutgoing = () => {
-    console.log('out');
     this.incoming = false;
     this.outgoing = true;
   };
@@ -53,7 +51,6 @@ export class HomepageInputComponent implements OnInit {
         amount: -newAmount,
         id: 0,
       }
-      console.log('incoming item')
       this.itemsService.addNewItem(newItem);
 
     } else {
@@ -64,7 +61,6 @@ export class HomepageInputComponent implements OnInit {
         amount: newAmount,
         id: 0,
       }
-      console.log('outgoing item')
       this.itemsService.addNewItem(newItem);
     }
 
